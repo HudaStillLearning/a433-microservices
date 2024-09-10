@@ -1,0 +1,28 @@
+# versi dari docker compose
+version: '2.29.2'
+
+# service-service yang akan dijalankan
+services:
+  # nama service item-db
+  item-db:
+    # menggunakan image mongo:3
+    image: mongo:3
+    # volume yang akan digunakan dengan target path-nya juga 
+    volumes:
+      - app-db:/data/db
+    # menambahkan restart policy 'always', restart jika container berhenti
+    restart: always
+
+  # nama service item-app
+  item-app:
+    # menggunakan image item-app dari Docker Hub sendiri
+    image: k1zuko/item-app:v1
+    # port yang akan dijalankan // dari container (8080) ke host (80)
+    ports:
+      - 80:8080
+    # menambahkan restart policy 'always', restart jika container berhenti
+    restart: always
+
+# membuat volume app-db
+volumes:
+  app-db:
