@@ -1,6 +1,10 @@
 # menggunakan base image node.js versi 14
 FROM node:14
 
+# agar bisa menghubungkan github repo dengan package
+LABEL org.opencontainers.image.source=https://github.com/HudaStillLearning/a433-microservices
+# deskripsi package
+LABEL org.opencontainers.image.description="item-app image"
 # membuat working directory 'app' di container
 WORKDIR /app
 # menyalin source code yang ada di local ke working directory container
